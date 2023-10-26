@@ -4,4 +4,5 @@ export type Car = {
   model: string
   year: number
   color: string
+  user: number
 }

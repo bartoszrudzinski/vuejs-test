@@ -10,5 +10,5 @@ export type User = BaseUser & {
 }
 
 export type UserDetails = BaseUser & {
-  cars: Car[]
+  cars: Omit<Car, 'user'>[]
 }
