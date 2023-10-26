@@ -36,8 +36,7 @@
   --color-text: var(--vt-c-text-light-1);
   --color-table-heading: var(--vt-c-text-light-2);
   --color-table-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+  --color-text-disabled: var(--vt-c-text-light-1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,6 +52,7 @@
     --color-text: var(--vt-c-text-dark-2);
     --color-table-heading: var(--vt-c-text-dark-2);
     --color-table-text: var(--vt-c-text-dark-1);
+    --color-text-disabled: var(--vt-c-text-light-1);
   }
 }
 

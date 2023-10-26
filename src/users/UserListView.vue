@@ -37,7 +37,12 @@ updateUserList()
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.cars.length }}</td>
-            <td style="width: 105px"><a href="#">Details</a> <a href="#">Edit</a></td>
+            <td style="width: 105px">
+              <RouterLink :to="{ name: 'userDetails', params: { id: user.id } }">
+                Details
+              </RouterLink>
+              <a href="#">Edit</a>
+            </td>
           </tr>
         </tbody>
       </table>
