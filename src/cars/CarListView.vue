@@ -37,7 +37,12 @@ updateUserList()
             <td>{{ car.id }}</td>
             <td>{{ car.make }}</td>
             <td>{{ car.model }}</td>
-            <td style="width: 105px"><a href="#">Details</a> <a href="#">Edit</a></td>
+            <td style="width: 105px">
+              <RouterLink :to="{ name: 'carDetails', params: { id: car.id } }">
+                Details
+              </RouterLink>
+              <a href="#">Edit</a>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -24,6 +24,8 @@ strong {
   font-weight: 500;
 }
 
-input:disabled {
+input:disabled,
+select:disabled {
   color: var(--color-text-disabled);
+  opacity: 1;
 }

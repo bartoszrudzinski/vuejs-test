@@ -25,6 +25,12 @@ const router = createRouter({
       path: '/cars',
       name: 'cars',
       component: () => import('../cars/CarListView.vue')
+    },
+    {
+      path: '/cars/:id',
+      name: 'carDetails',
+      props: true,
+      component: () => import('../cars/CarDetailsView.vue')
     }
   ]
 })
