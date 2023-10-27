@@ -88,6 +88,31 @@ export function makeServer({ environment = 'development' } = {}) {
       this.get('cars/:id', (schema, request) => {
         return schema.cars.find(request.params.id)
       })
+
+      this.put('/cars', (schema, request) => {
+        const userData = JSON.parse(request.requestBody)
+        const requiredKeys = ['make', 'model', 'year', 'color', 'user']
+
+        if (requiredKeys.some((key) => Object.hasOwn(userData, key) && !userData[key])) {
+          return wrongInputDataError('Values cannot be empty.')
+        }
+
+        const user = userData.user && schema.users.find(userData.user)
+        if (Object.hasOwn(userData, 'user') && !user) {
+          return wrongInputDataError('"user" attribute value must be a valid user id.')
+        }
+
+        const carModel = schema.cars.find(userData.id)
+        const updateData = {
+          make: userData.make,
+          model: userData.model,
+          year: userData.year,
+          color: userData.color,
+          userId: userData.user
+        }
+
+        return carModel.update(updateData)
+      })
     }
   })
 }
