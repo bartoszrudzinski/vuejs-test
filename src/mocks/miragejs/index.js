@@ -1,5 +1,6 @@
 import { belongsTo, createServer, hasMany, Model } from 'miragejs'
 import { AppSerializer } from '@/mocks/miragejs/serializer'
+import { wrongInputDataError } from '@/mocks/miragejs/error'
 
 export function makeServer({ environment = 'development' } = {}) {
   return createServer({
@@ -53,6 +54,35 @@ export function makeServer({ environment = 'development' } = {}) {
 
       this.get('cars', (schema) => {
         return schema.cars.all()
+      })
+
+      this.post('/cars', (schema, request) => {
+        const userData = JSON.parse(request.requestBody)
+
+        const requiredKeys = ['make', 'model', 'year', 'color', 'user']
+        const userDataKeys = Object.keys(userData)
+        if (!requiredKeys.every((key) => userDataKeys.includes(key))) {
+          return wrongInputDataError(
+            `Some of the attributes are missing. Required attributes: ${requiredKeys.join(', ')}.`
+          )
+        }
+
+        if (requiredKeys.some((key) => !userData[key])) {
+          return wrongInputDataError('Values cannot be empty.')
+        }
+
+        const user = userData.user && schema.users.find(userData.user)
+        if (!user) {
+          return wrongInputDataError('"user" attribute value must be a valid user id.')
+        }
+
+        return schema.cars.create({
+          make: userData.make,
+          model: userData.model,
+          year: userData.year,
+          color: userData.color,
+          user
+        })
       })
 
       this.get('cars/:id', (schema, request) => {
