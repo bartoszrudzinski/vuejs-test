@@ -1,5 +1,5 @@
 <template>
-  <div class="base-loader">
+  <div class="base-loader" data-testid="base-loader">
     <span class="base-loader__icon"></span>
     <span>Loading...</span>
   </div>
