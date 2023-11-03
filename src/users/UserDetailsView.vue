@@ -30,10 +30,10 @@ updateUserDetails()
       <template v-else-if="user">
         <div class="user-details-view__form">
           <label for="id">Id</label>
-          <input :value="user.id" name="id" disabled />
+          <input :value="user.id" name="id" id="id" disabled />
 
           <label for="name">Name</label>
-          <input :value="user.name" name="name" disabled />
+          <input :value="user.name" name="name" id="name" disabled />
         </div>
 
         <h2>Cars</h2>

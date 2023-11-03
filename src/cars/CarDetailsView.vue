@@ -43,22 +43,22 @@ updateUserList()
       <template v-else-if="car">
         <div class="car-details-view__form">
           <label for="id">Id</label>
-          <input :value="car.id" name="id" type="number" disabled />
+          <input :value="car.id" name="id" id="id" type="number" disabled />
 
           <label for="make">Make</label>
-          <input :value="car.make" name="make" disabled />
+          <input :value="car.make" name="make" id="make" disabled />
 
           <label for="model">Model</label>
-          <input :value="car.model" name="model" disabled />
+          <input :value="car.model" name="model" id="model" disabled />
 
           <label for="year">Year</label>
-          <input :value="car.year" name="year" type="number" disabled />
+          <input :value="car.year" name="year" id="year" type="number" disabled />
 
           <label for="color">Color</label>
-          <input :value="car.color" name="color" disabled />
+          <input :value="car.color" name="color" id="color" disabled />
 
           <label for="user">Owner</label>
-          <select name="user" v-model="car.user" disabled>
+          <select name="user" id="user" v-model="car.user" disabled>
             <option :value="user" v-for="user in userList" :key="user.id">
               {{ user.name }}
             </option>
