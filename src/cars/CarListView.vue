@@ -18,7 +18,11 @@ updateUserList()
 
 <template>
   <section class="car-list-view">
-    <h1>Car list</h1>
+    <header class="car-list-view__header">
+      <h1>Car list</h1>
+
+      <RouterLink :to="{ name: 'carCreate' }"> + Add new </RouterLink>
+    </header>
 
     <div class="car-list-view__content">
       <BaseLoader v-if="isLoading" />
@@ -52,6 +56,12 @@ updateUserList()
 
 <style scoped>
 .car-list-view {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   h1 {
     color: var(--color-heading);
   }

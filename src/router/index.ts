@@ -27,6 +27,11 @@ const router = createRouter({
       component: () => import('../cars/CarListView.vue')
     },
     {
+      path: '/cars/new',
+      name: 'carCreate',
+      component: () => import('../cars/CarDetailsAddView.vue')
+    },
+    {
       path: '/cars/:id',
       name: 'carDetails',
       props: true,
