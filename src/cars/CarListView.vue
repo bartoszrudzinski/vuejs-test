@@ -45,7 +45,9 @@ updateUserList()
               <RouterLink :to="{ name: 'carDetails', params: { id: car.id } }">
                 Details
               </RouterLink>
-              <a href="#">Edit</a>
+              <RouterLink :to="{ name: 'carDetailsEdit', params: { id: car.id } }">
+                Edit
+              </RouterLink>
             </td>
           </tr>
         </tbody>

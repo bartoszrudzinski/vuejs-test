@@ -16,3 +16,8 @@ export const createCar = async (car: Omit<Car, 'id'>) => {
   const response = await fetch(BASE_URL, { method: 'POST', body: JSON.stringify(car) })
   return await response.json()
 }
+
+export const updateCar = async (car: Car) => {
+  const response = await fetch(BASE_URL, { method: 'PUT', body: JSON.stringify(car) })
+  return await response.json()
+}
